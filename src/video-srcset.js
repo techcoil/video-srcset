@@ -1,6 +1,42 @@
 (function (window, undefined) {
 
-	function videoSourceSet(elements) {
+	if (typeof Object.assign != 'function') {
+		// Must be writable: true, enumerable: false, configurable: true
+		Object.defineProperty(Object, "assign", {
+			value: function assign(target, varArgs) { // .length of function is 2
+				'use strict';
+				if (target == null) { // TypeError if undefined or null
+					throw new TypeError('Cannot convert undefined or null to object');
+				}
+
+				var to = Object(target);
+
+				for (var index = 1; index < arguments.length; index++) {
+					var nextSource = arguments[index];
+
+					if (nextSource != null) { // Skip over if undefined or null
+						for (var nextKey in nextSource) {
+							// Avoid bugs when hasOwnProperty is shadowed
+							if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+								to[nextKey] = nextSource[nextKey];
+							}
+						}
+					}
+				}
+				return to;
+			},
+			writable: true,
+			configurable: true
+		});
+	}
+
+
+	function videoSourceSet(options, elements) {
+
+		options = Object.assign({}, {
+			resize: false,
+			resizeDelay: 50
+		}, options);
 
 		// If no specific elements recieved -> take all the video tags in the page
 		if (elements === undefined) {
@@ -79,6 +115,18 @@
 		}
 
 		init(elements);
+
+		if(options.resize) {
+			var resizeDelayTimeout = null;
+			window.addEventListener('resize', function() {
+				if(resizeDelayTimeout!==null) {
+					clearTimeout(resizeDelayTimeout);
+				}
+				resizeDelayTimeout = setTimeout(function() {
+					init(elements);
+				}, options.resizeDelay);
+			});
+		}
 
 	}
 
