@@ -13,11 +13,11 @@ Set the source set on your video tag as:
 And, init the library with
  
 ```js
-videoSrcset(); // Run on all <VIDEO> elements in the page
+videoSrcset(options); // Run on all <VIDEO> elements in the page
 
 // OR 
 
-videoSrcset(document.getElementsByClassName('responsive-video')); // Run only on <VIDEO> tags with class responsive-video
+videoSrcset(options, document.getElementsByClassName('responsive-video')); // Run only on <VIDEO> tags with class responsive-video
 ```
  
 
@@ -28,6 +28,13 @@ The library has no dependencies, but, it defines a jQuery plugin, so, in case yo
 ```
 $('video.responsive-video').videoSrcset();
 ```
+
+## Options
+
+| Option Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `resize` | boolean | `false` | If set to `true` - the library will replace the src of the videos on `resize` event |
+| `resizeDelay` | number | `50` (ms) | Number of milliseconds to wait after a resize event before checking for new sources. Ingored if `resize: false` | 
 
 ---
 
