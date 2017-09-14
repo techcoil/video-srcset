@@ -136,10 +136,8 @@
 
 	if (typeof window.jQuery !== 'undefined') {
 		(function ($) {
-			$.fn.videoSrcset = function () {
-				videoSourceSet($(this).filter('video[srcset]').map(function () {
-					return this;
-				}));
+			$.fn.videoSrcset = function (options) {
+				return new videoSourceSet(options || {}, $(this).filter('video[srcset]'));
 			}
 		})(window.jQuery);
 	}
