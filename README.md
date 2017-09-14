@@ -26,7 +26,7 @@ videoSrcset(options, document.getElementsByClassName('responsive-video')); // Ru
 The library has no dependencies, but, it defines a jQuery plugin, so, in case you use jQuery in your project you can initialize the library with:
 
 ```
-$('video.responsive-video').videoSrcset();
+$('video.responsive-video').videoSrcset(options);
 ```
 
 ## Options
