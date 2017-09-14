@@ -1,0 +1,25 @@
+{
+  "name": "video-srcset",
+  "version": "0.0.1",
+  "description": "Making the HTML5 Video tag responsive (with srcset attribute like img has)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tech-marketing/video-srcset.git"
+  },
+  "keywords": [
+    "video",
+    "html5",
+    "srcset",
+    "responsiveness"
+  ],
+  "author": "Yaron Uliel <yaron@techmarketing.co.il>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tech-marketing/video-srcset/issues"
+  },
+  "homepage": "https://github.com/tech-marketing/video-srcset#readme"
+}
